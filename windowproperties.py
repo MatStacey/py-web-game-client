@@ -3,18 +3,16 @@
 from PyQt5.QtGui import QIcon
 import json, os
 
-
-
-class ClientProperties():
+class WindowProperties():
 
     protocol = "https://"
     flyff_url = "universe.flyff.com/play"
 
     def __init__(self, url):
         if not url or url.strip() == "":
-            url = ClientProperties.flyff_url
+            url = WindowProperties.flyff_url
             
-        self.url = ClientProperties.protocol + url
+        self.url = WindowProperties.protocol + url
         self.app_name = "pyFlyffClient"
         self.icon_file = "icons/PyFlyff.ico"
         self.min_window_size = { "width" : 640, "height" : 480 }
