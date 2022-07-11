@@ -1,6 +1,6 @@
 from multiprocessing.connection import Client
 from PyQt5.QtCore import QUrl
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QAction
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 
 import clientproperties, sys
@@ -35,7 +35,11 @@ class MainWindow(QMainWindow):
     def load_menu(self):
         menu_items = ["File", "Macro", "Settings", "Community", "About"]
         for menu_item in menu_items:
-            self.menuBar().addMenu(menu_item)
+            submenu_item = self.menuBar().addMenu(menu_item)
+            if menu_item == "File":
+                exit = QAction("Exit", self)
+                exit.triggered.connect(app.quit)
+                submenu_item.addAction(exit)
 
 app = QApplication(sys.argv)
 app_properties = clientproperties.ClientProperties(clientproperties.ClientProperties.flyff_url)
