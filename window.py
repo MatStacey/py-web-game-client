@@ -1,27 +1,31 @@
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import QUrl, Qt
 from PyQt5.QtWidgets import QMainWindow, QAction
-from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEnginePage
+
+import windowproperties
 
 class Window(QMainWindow):
 
     default_user_agent = "None"
 
     def __init__(self, properties, application):
+        self.windows = [self]
         super(Window, self).__init__()
         self.vk_code_map = properties.load_vk_code()
-        self.set_main_window_properties(properties)
+        self.set_app_window_properties(properties)
         self.load_user_agent()
         self.load_menu(application)
-        self.load_flyff_homepage(properties)
+        self.load_homepage(properties)
 
-    def set_main_window_properties(self, properties):
+    def set_app_window_properties(self, properties):
         window = properties.set_window_properties(self)
+        window.browser = None
         window.showMaximized()
 
     def load_user_agent(self):
         return Window.default_user_agent
 
-    def load_flyff_homepage(self, properties):
+    def load_homepage(self, properties):
         if not self.browser or self.browser.strip() == "":
             self.browser = None
         self.browser = QWebEngineView()
@@ -33,6 +37,15 @@ class Window(QMainWindow):
         for menu_item in menu_items:
             submenu_item = self.menuBar().addMenu(menu_item)
             if menu_item == "File":
-                exit = QAction("Exit", self)
-                exit.triggered.connect(application.app.quit)
-                submenu_item.addAction(exit)
+
+                new_window_action = QAction("New Window", self)
+                new_window_action.triggered.connect(lambda: self.new_window())
+                submenu_item.addAction(new_window_action)
+
+                exit_action = QAction("Exit", self)
+                exit_action.triggered.connect(application.app.quit)
+                submenu_item.addAction(exit_action)
+
+
+    def new_window(self):
+        pass

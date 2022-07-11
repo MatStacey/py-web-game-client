@@ -34,7 +34,6 @@ class WindowProperties():
         return vk_code_map
     
     def set_window_properties(self, window):
-        window.browser = None
         window.setWindowIcon(QIcon(self.get_icon()))
         window.setMinimumSize(self.min_window_size['width'], self.min_window_size['height'])
         return window
