@@ -1,8 +1,7 @@
-from PyQt5.QtCore import QUrl, Qt
+from PyQt5.QtCore import QUrl
 from PyQt5.QtWidgets import QMainWindow, QAction
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEnginePage
+from PyQt5.QtWebEngineWidgets import QWebEngineView
 
-import windowproperties
 
 class Window(QMainWindow):
 
