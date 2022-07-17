@@ -2,6 +2,7 @@
     "name" : "File",
     "submenu" : [
         {"name" : "Macro"},
+        {"name": "New Window"},
         {"name": "Exit"}
     ]
 }

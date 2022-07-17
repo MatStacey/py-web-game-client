@@ -3,13 +3,13 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 import menuitem
 
-class Window(QMainWindow):
+class MainWindow(QMainWindow):
 
     default_user_agent = "None"
     config_file = "menus.json"
 
     def __init__(self, properties, application):
-        super(Window, self).__init__()
+        super(MainWindow, self).__init__()
         self.vk_code_map = properties.load_vk_code()
         self.set_app_window_properties(properties)
         self.load_user_agent()
@@ -22,7 +22,7 @@ class Window(QMainWindow):
         window.showNormal()
 
     def load_user_agent(self):
-        return Window.default_user_agent
+        return MainWindow.default_user_agent
 
     def load_homepage(self, properties):
         if not self.browser or self.browser.strip() == "":
@@ -32,5 +32,6 @@ class Window(QMainWindow):
         self.browser.setUrl(QUrl(properties.get_url()))
     
     def load_menu(self, application):
-        menu = menuitem.MenuItem(Window.config_file, self, application)
+        menu = menuitem.MenuItem(MainWindow.config_file, self, application)
         return menu.add_to_window()
+

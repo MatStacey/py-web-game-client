@@ -16,13 +16,13 @@ class WindowProperties():
             self.app_name = properties['name']
             self.icon_file = properties['icon']
             self.min_window_size = properties['default_window_size']
-            self.url = WindowProperties.protocol + properties['url']
+            self.url = properties['url']
 
     def get_name(self):
         return self.app_name
 
     def get_url(self):
-        return self.url
+        return WindowProperties.protocol + self.url
 
     def get_icon(self):
         return self.icon_file
@@ -38,4 +38,3 @@ class WindowProperties():
         window.setMinimumSize(640, 480)
         window.resize(self.min_window_size['width'], self.min_window_size['height'])
         return window
-        

@@ -13,5 +13,7 @@ class SubmenuItem:
         q_action = QAction(self.name, self.menu.get_window())
         if(self.name == "Exit"):
             q_action.triggered.connect(self.application.app.quit)
+        if(self.name == "New Window"):
+            q_action.triggered.connect(lambda: self.application.create_alt_window())
         return q_action
 
