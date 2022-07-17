@@ -2,5 +2,5 @@
     "url" : "universe.flyff.com/play",
     "name" : "pyFlyffClient",
     "icon" : "icons/PyFlyff.ico",
-    "default_window_size" : { "height" : 480, "width": 640}
+    "default_window_size" : { "width" : 1920, "height": 1080}
 }

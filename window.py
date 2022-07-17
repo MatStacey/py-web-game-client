@@ -19,7 +19,8 @@ class Window(QMainWindow):
     def set_app_window_properties(self, properties):
         window = properties.set_window_properties(self)
         window.browser = None
-        window.showMaximized()
+        window.showNormal()
+        # window.resize(1920, 1080)
 
     def load_user_agent(self):
         return Window.default_user_agent

@@ -3,9 +3,10 @@ from PyQt5.QtWidgets import QAction
 
 class SubmenuItem:
 
-    def __init__(self, name, menu):
+    def __init__(self, name, menu, application):
         self.menu = menu
         self.name = name
+        self.application = application
         self.command = lambda: get_command()
 
         def get_command():

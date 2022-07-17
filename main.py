@@ -13,4 +13,4 @@ class Application(QApplication):
     def run(self):
         self.app.exec_()
 
-Application("Flyff", ).run()
+Application("Flyff - Test", ).run()
