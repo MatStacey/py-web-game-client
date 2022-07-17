@@ -7,8 +7,6 @@ class SubmenuItem:
         self.menu = menu
         self.name = name
         self.application = application
-        self.command = None
-
 
     # MMM Janky if statements
     def create_action(self):
