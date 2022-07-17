@@ -8,8 +8,7 @@ class Application(QApplication):
         super(Application).__init__()
         self.setApplicationName(name)
         self.app = QApplication(sys.argv)
-        self.app_properties = windowproperties.WindowProperties(windowproperties.WindowProperties.flyff_url)
-        self.window = window.Window(self.app_properties, self)
+        self.window = window.Window(windowproperties.WindowProperties(), self)
     
     def run(self):
         self.app.exec_()

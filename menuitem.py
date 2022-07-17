@@ -1,13 +1,19 @@
 import submenuitem
+import os
+import windowproperties
+import json
 
 class MenuItem:
 
-    def __init__(self, name, window, application):
-        self.name = name
-        self.window = window
-        self.application = application
-        self.menubar = None
-        self.submenu_items = ["Exit", "Macro"]
+    def __init__(self, file, window, application):
+        menus_json = os.path.join(windowproperties.WindowProperties.config_directory, file)
+        with open(menus_json, 'r') as json_file:
+            menus = json.load(json_file)
+            self.name = menus['name']
+            self.submenu_names = menus['submenu']
+            self.window = window
+            self.application = application
+            self.menubar = None
 
 
     def add_to_window(self):
@@ -19,7 +25,7 @@ class MenuItem:
         return self.window
 
     def populate_submenu(self):
-        for submenu_item in self.submenu_items:
-            submenu = submenuitem.SubmenuItem(submenu_item, self)
+        for submenu_item in self.submenu_names:
+            submenu = submenuitem.SubmenuItem(submenu_item['name'], self)
             self.menubar.addAction(submenu.create_action())
         return self

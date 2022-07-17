@@ -1,0 +1,9 @@
+{
+    "name" : "File",
+    "submenu" : [{
+        "name" : "Exit"
+    },
+    {
+        "name": "Macro"
+    }]
+}

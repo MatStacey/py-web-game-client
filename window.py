@@ -32,5 +32,5 @@ class Window(QMainWindow):
         self.browser.setUrl(QUrl(properties.get_url()))
     
     def load_menu(self, application):
-        menu = menuitem.MenuItem("File", self, application)
+        menu = menuitem.MenuItem("menus.json", self, application)
         return menu.add_to_window()

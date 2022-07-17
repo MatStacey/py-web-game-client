@@ -6,16 +6,16 @@ import json, os
 class WindowProperties():
 
     protocol = "https://"
-    flyff_url = "universe.flyff.com/play"
+    config_directory = os.path.dirname(__file__) + '/config'
 
-    def __init__(self, url):
-        if not url or url.strip() == "":
-            url = WindowProperties.flyff_url
-            
-        self.url = WindowProperties.protocol + url
-        self.app_name = "pyFlyffClient"
-        self.icon_file = "icons/PyFlyff.ico"
-        self.min_window_size = { "width" : 640, "height" : 480 }
+    def __init__(self):
+        window_properties_json = os.path.join(WindowProperties.config_directory, 'properties.json')
+        with open(window_properties_json, 'r') as json_file:
+            properties = json.load(json_file)
+            self.app_name = properties['name']
+            self.icon_file = properties['icon']
+            self.min_window_size = properties['default_window_size']
+            self.url = WindowProperties.protocol + properties['url']
 
     def get_name(self):
         return self.app_name
@@ -27,8 +27,7 @@ class WindowProperties():
         return self.icon_file
 
     def load_vk_code(self):
-        config_directory = os.path.dirname(__file__) + '/config'
-        vk_code_json_path = os.path.join(config_directory, 'vk_code.json')
+        vk_code_json_path = os.path.join(WindowProperties.config_directory, 'vk_code.json')
         with open(vk_code_json_path, 'r') as json_file:
             vk_code_map = json.load(json_file)
         return vk_code_map
