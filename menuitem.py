@@ -15,7 +15,6 @@ class MenuItem:
             self.name = menus['name']
             self.submenu_names = menus['submenu']
 
-
     def add_to_window(self):
         self.menubar = self.window.menuBar().addMenu(self.name)
         self.populate_submenu()

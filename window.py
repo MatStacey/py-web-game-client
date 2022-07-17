@@ -3,10 +3,10 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 import menuitem
 
-
 class Window(QMainWindow):
 
     default_user_agent = "None"
+    config_file = "menus.json"
 
     def __init__(self, properties, application):
         super(Window, self).__init__()
@@ -20,7 +20,6 @@ class Window(QMainWindow):
         window = properties.set_window_properties(self)
         window.browser = None
         window.showNormal()
-        # window.resize(1920, 1080)
 
     def load_user_agent(self):
         return Window.default_user_agent
@@ -33,5 +32,5 @@ class Window(QMainWindow):
         self.browser.setUrl(QUrl(properties.get_url()))
     
     def load_menu(self, application):
-        menu = menuitem.MenuItem("menus.json", self, application)
+        menu = menuitem.MenuItem(Window.config_file, self, application)
         return menu.add_to_window()

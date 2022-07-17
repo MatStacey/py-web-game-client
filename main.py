@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QApplication
-
 import windowproperties, window, sys
 
 class Application(QApplication):

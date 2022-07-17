@@ -6,7 +6,8 @@ import json, os
 class WindowProperties():
 
     protocol = "https://"
-    config_directory = os.path.dirname(__file__) + '/config'
+    config_directory = os.path.dirname(__file__) + "/config"
+    vk_code_json = "vk_code.json"
 
     def __init__(self, config):
         window_properties_json = os.path.join(WindowProperties.config_directory, config)
@@ -27,7 +28,7 @@ class WindowProperties():
         return self.icon_file
 
     def load_vk_code(self):
-        vk_code_json_path = os.path.join(WindowProperties.config_directory, 'vk_code.json')
+        vk_code_json_path = os.path.join(WindowProperties.config_directory, WindowProperties.vk_code_json)
         with open(vk_code_json_path, 'r') as json_file:
             vk_code_map = json.load(json_file)
         return vk_code_map
@@ -37,3 +38,4 @@ class WindowProperties():
         window.setMinimumSize(640, 480)
         window.resize(self.min_window_size['width'], self.min_window_size['height'])
         return window
+        
