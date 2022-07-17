@@ -8,8 +8,8 @@ class WindowProperties():
     protocol = "https://"
     config_directory = os.path.dirname(__file__) + '/config'
 
-    def __init__(self):
-        window_properties_json = os.path.join(WindowProperties.config_directory, 'properties.json')
+    def __init__(self, config):
+        window_properties_json = os.path.join(WindowProperties.config_directory, config)
         with open(window_properties_json, 'r') as json_file:
             properties = json.load(json_file)
             self.app_name = properties['name']
@@ -34,6 +34,6 @@ class WindowProperties():
     
     def set_window_properties(self, window):
         window.setWindowIcon(QIcon(self.get_icon()))
-        window.setMinimumSize(self.min_window_size['width'], self.min_window_size['height'])
+        window.setMinimumSize(640, 480)
         window.resize(self.min_window_size['width'], self.min_window_size['height'])
         return window

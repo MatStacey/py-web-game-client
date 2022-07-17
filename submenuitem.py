@@ -7,14 +7,11 @@ class SubmenuItem:
         self.menu = menu
         self.name = name
         self.application = application
-        self.command = lambda: get_command()
-
-        def get_command():
-            if self.name == "Exit":
-                self.command = self.application.app.quit
+        self.command = None
 
     def create_action(self):
         q_action = QAction(self.name, self.menu.get_window())
-        q_action.triggered.connect(self.command)
+        if(self.name == "Exit"):
+            q_action.triggered.connect(self.application.app.quit)
         return q_action
 

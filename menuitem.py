@@ -7,13 +7,13 @@ class MenuItem:
 
     def __init__(self, file, window, application):
         menus_json = os.path.join(windowproperties.WindowProperties.config_directory, file)
+        self.window = window
+        self.application = application
+        self.menubar = None
         with open(menus_json, 'r') as json_file:
             menus = json.load(json_file)
             self.name = menus['name']
             self.submenu_names = menus['submenu']
-            self.window = window
-            self.application = application
-            self.menubar = None
 
 
     def add_to_window(self):
