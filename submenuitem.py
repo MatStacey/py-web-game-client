@@ -9,6 +9,8 @@ class SubmenuItem:
         self.application = application
         self.command = None
 
+
+    # MMM Janky if statements
     def create_action(self):
         q_action = QAction(self.name, self.menu.get_window())
         if(self.name == "Exit"):
