@@ -6,8 +6,14 @@ class SubmenuItem:
     def __init__(self, name, menu):
         self.menu = menu
         self.name = name
+        self.command = lambda: get_command()
 
-    def create_action(self, action):
+        def get_command():
+            if self.name == "Exit":
+                self.command = self.application.app.quit
+
+    def create_action(self):
         q_action = QAction(self.name, self.menu.get_window())
-        q_action.triggered.connect(action)
+        q_action.triggered.connect(self.command)
         return q_action
+

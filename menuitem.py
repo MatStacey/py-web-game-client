@@ -7,17 +7,19 @@ class MenuItem:
         self.window = window
         self.application = application
         self.menubar = None
+        self.submenu_items = ["Exit", "Macro"]
+
 
     def add_to_window(self):
         self.menubar = self.window.menuBar().addMenu(self.name)
-        self.populate_submenu(["Exit"])
+        self.populate_submenu()
         return self
 
     def get_window(self):
         return self.window
 
-    def populate_submenu(self, items):
-        for submenu_item in items:
+    def populate_submenu(self):
+        for submenu_item in self.submenu_items:
             submenu = submenuitem.SubmenuItem(submenu_item, self)
-            self.menubar.addAction(submenu.create_action(self.application.app.quit))
+            self.menubar.addAction(submenu.create_action())
         return self

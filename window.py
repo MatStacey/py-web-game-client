@@ -9,7 +9,6 @@ class Window(QMainWindow):
     default_user_agent = "None"
 
     def __init__(self, properties, application):
-        # self.windows = [self]
         super(Window, self).__init__()
         self.vk_code_map = properties.load_vk_code()
         self.set_app_window_properties(properties)
