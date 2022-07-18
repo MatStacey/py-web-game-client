@@ -1,5 +1,7 @@
 
 from PyQt5.QtWidgets import QAction
+import bot
+import threading
 
 class SubmenuItem:
 
@@ -15,5 +17,10 @@ class SubmenuItem:
             q_action.triggered.connect(self.application.app.quit)
         if(self.name == "New Window"):
             q_action.triggered.connect(lambda: self.application.create_alt_window())
+        if(self.name == "Macro"):
+            window = self.menu.get_window()
+            buff_bot = bot.Bot()
+            buff_bot.toggle()
+            q_action.triggered.connect(lambda: window.multithreading(bot.Bot.bot_loop(buff_bot)))
         return q_action
 
