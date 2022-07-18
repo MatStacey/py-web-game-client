@@ -27,6 +27,9 @@ class WindowProperties():
     def get_icon(self):
         return self.icon_file
 
+    def get_app_name(self):
+        return self.app_name
+
     def load_vk_code(self):
         vk_code_json_path = os.path.join(WindowProperties.config_directory, WindowProperties.vk_code_json)
         with open(vk_code_json_path, 'r') as json_file:
