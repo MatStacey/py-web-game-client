@@ -1,31 +1,21 @@
 {
     "buffs" : [
         {
-            "name" : "quick_step",
-            "cool_down" : 0,
-            "base_value" : 250,
-            "int_scaling" : 2,
-            "cast_time" : 1,
-            "level" : 20,
-            "max_level" : 20,
-            "scales_on" : "time",
-            "tier" : 2,
-            "job" : "assist"
-        },
-        {
-            "name" : "patience",
-            "cool_down" : 0,
-            "base_value" : 250,
-            "int_scaling" : 2,
-            "cast_time" : 1,
-            "level" : 20,
-            "max_level" : 20,
-            "scales_on" : "time",
-            "tier" : 2,
-            "job" : "assist"
-        },
-        {
             "name" : "mental_sign",
+            "hotkey" : "1",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "quick_step",
+            "hotkey" : "2",
             "cool_down" : 0,
             "base_value" : 250,
             "int_scaling" : 2,
@@ -38,6 +28,7 @@
         },
         {
             "name" : "haste",
+            "hotkey" : "3",
             "cool_down" : 0,
             "base_value" : 250,
             "int_scaling" : 2,
@@ -49,7 +40,34 @@
             "job" : "assist"
         },
         {
+            "name" : "patience",
+            "hotkey" : "4",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
             "name" : "heap_up",
+            "hotkey" : "5",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "cats_reflex",
+            "hotkey" : "6",
             "cool_down" : 0,
             "base_value" : 250,
             "int_scaling" : 2,
@@ -62,6 +80,7 @@
         },
         {
             "name" : "cannon_ball",
+            "hotkey" : "7",
             "cool_down" : 0,
             "base_value" : 250,
             "int_scaling" : 2,
@@ -74,6 +93,7 @@
         },
         {
             "name" : "beef_up",
+            "hotkey" : "8",
             "cool_down" : 0,
             "base_value" : 250,
             "int_scaling" : 2,
@@ -85,19 +105,8 @@
             "job" : "assist"
         },
         {
-            "name" : "heal",
-            "cool_down" : 0,
-            "base_value" : 240,
-            "int_scaling" : 5.6,
-            "cast_time" : 1,
-            "level" : 3,
-            "max_level" : 20,
-            "scales_on" : "heal",
-            "tier" : 2,
-            "job" : "assist"
-        },
-        {
             "name" : "spirit_fortune",
+            "hotkey" : "0",
             "cool_down" : 0,
             "base_value" : 160,
             "int_scaling" : 1.5,
@@ -109,7 +118,21 @@
             "job" : "ringmaster"
         },
         {
+            "name" : "heal",
+            "hotkey" : "9",
+            "cool_down" : 0,
+            "base_value" : 240,
+            "int_scaling" : 5.6,
+            "cast_time" : 1,
+            "level" : 3,
+            "max_level" : 20,
+            "scales_on" : "heal",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
             "name" : "geburah_tiphreth",
+            "hotkey" : "None",
             "cool_down" : 39,
             "base_value" : 30,
             "int_scaling" : 0.2,
@@ -122,7 +145,8 @@
         },
         {
             "name" : "holy_cross",
-            "cool_down" : 0,
+            "hotkey" : "c",
+            "cool_down" : 0.5,
             "base_value" : 5,
             "int_scaling" : 0,
             "cast_time" : 1,

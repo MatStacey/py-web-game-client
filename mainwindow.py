@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QUrl
 from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEnginePage
 import menuitem
 
 class MainWindow(QMainWindow):
@@ -15,6 +15,13 @@ class MainWindow(QMainWindow):
         self.load_user_agent()
         self.menu = self.load_menu(application)
         self.load_homepage(properties)
+        self.name = properties.get_app_name()
+
+    def get_vk_code_map(self):
+        return self.vk_code_map
+
+    def get_name(self):
+        return self.name
 
     def set_app_window_properties(self, properties):
         window = properties.set_window_properties(self)
@@ -28,8 +35,20 @@ class MainWindow(QMainWindow):
         if not self.browser or self.browser.strip() == "":
             self.browser = None
         self.browser = QWebEngineView()
+
+        client_folder = "C:/PyFlyffClient/profiles/profile"
+
+        main_profile = QWebEngineProfile("profile", self.browser)
+        main_profile.setCachePath(client_folder)
+        main_profile.setPersistentStoragePath(client_folder)
+        main_page = QWebEnginePage(main_profile, self.browser)
+
+        self.browser.setPage(main_page)
+
         self.setCentralWidget(self.browser)
         self.browser.setUrl(QUrl(properties.get_url()))
+        self.setWindowTitle("Flyff - Test")
+        self.browser.page().profile().setHttpUserAgent(self.load_user_agent())
     
     def load_menu(self, application):
         menu = menuitem.MenuItem(MainWindow.config_file, self, application)
