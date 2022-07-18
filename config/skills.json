@@ -1,0 +1,137 @@
+{
+    "buffs" : [
+        {
+            "name" : "quick_step",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "patience",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "mental_sign",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "haste",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 0,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "heap_up",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "cannon_ball",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "beef_up",
+            "cool_down" : 0,
+            "base_value" : 250,
+            "int_scaling" : 2,
+            "cast_time" : 1,
+            "level" : 20,
+            "max_level" : 20,
+            "scales_on" : "time",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "heal",
+            "cool_down" : 0,
+            "base_value" : 240,
+            "int_scaling" : 5.6,
+            "cast_time" : 1,
+            "level" : 3,
+            "max_level" : 20,
+            "scales_on" : "heal",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "spirit_fortune",
+            "cool_down" : 0,
+            "base_value" : 160,
+            "int_scaling" : 1.5,
+            "cast_time" : 1,
+            "level" : 10,
+            "max_level" : 10,
+            "scales_on" : "time",
+            "tier" : 3,
+            "job" : "ringmaster"
+        },
+        {
+            "name" : "geburah_tiphreth",
+            "cool_down" : 39,
+            "base_value" : 30,
+            "int_scaling" : 0.2,
+            "cast_time" : 1,
+            "level" : 10,
+            "max_level" : 10,
+            "scales_on" : "time",
+            "tier" : 3,
+            "job" : "ringmaster"
+        },
+        {
+            "name" : "holy_cross",
+            "cool_down" : 0,
+            "base_value" : 5,
+            "int_scaling" : 0,
+            "cast_time" : 1,
+            "level" : 1,
+            "max_level" : 1,
+            "scales_on" : "time",
+            "tier" : 3,
+            "job" : "ringmaster"
+        }
+    ]
+
+}
