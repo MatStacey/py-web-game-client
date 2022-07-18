@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QUrl
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-import menuitem, threading
+import menuitem
 
 class MainWindow(QMainWindow):
 
@@ -34,8 +34,3 @@ class MainWindow(QMainWindow):
     def load_menu(self, application):
         menu = menuitem.MenuItem(MainWindow.config_file, self, application)
         return menu.add_to_window()
-
-    @staticmethod
-    def multithreading(function):
-        threading.Thread(target=function).start()
-

@@ -1,7 +1,8 @@
 {
     "name" : "File",
     "submenu" : [
-        {"name" : "Macro"},
+        {"name" : "Start Macro"},
+        {"name" : "Stop Macro"},
         {"name": "New Window"},
         {"name": "Exit"}
     ]

@@ -1,5 +1,6 @@
 import windowproperties, os, json
 import random, time
+
 class Buff:
 
     skills_json_file = 'skills.json'
@@ -24,7 +25,7 @@ class Buff:
 
     def cast(self):
         print("Buff:", self.name, self.cool_down, self.base_value, self.int_scaling, self.cast_time, self.level, self.max_level, self.scales_on, self.tier, self.job)
-        min_sleep_time = self.cast_time + self.cool_down
+        min_sleep_time = self.cast_time
         time.sleep(random.uniform(min_sleep_time, min_sleep_time + random.uniform(Buff.random_min, Buff.random_max)))
 
     @staticmethod
