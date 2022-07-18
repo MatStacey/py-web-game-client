@@ -1,6 +1,6 @@
 import buff, threading
-import time
 import win32gui
+
 class Bot:
 
     thread = None
@@ -44,3 +44,4 @@ class Bot:
         Bot.stop_threads = False
         Bot.thread = threading.Thread(target = self.bot_loop, args = (lambda : Bot.stop_threads,))
         Bot.thread.start()
+        

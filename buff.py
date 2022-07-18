@@ -1,10 +1,8 @@
 import windowproperties, os, json
 import random, time
 from datetime import datetime, timedelta
-import win32gui
 import win32con
 import win32api
-import mainwindow
 
 class Buff:
 

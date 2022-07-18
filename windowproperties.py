@@ -1,5 +1,3 @@
-
-
 from PyQt5.QtGui import QIcon
 import json, os
 
