@@ -10,8 +10,7 @@ class SubmenuItem:
         self.application = application
         self.buff_bot = None
 
-
-    # MMM Janky if statements with hardcoded strings > will sort out later
+    # MMM Janky if statements with hardcoded strings > will sort out later (if/when i can be bothered)
     def create_action(self):
         q_action = QAction(self.name, self.menu.get_window())
         self.buff_bot = bot.Bot(self.menu.get_window())

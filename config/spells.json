@@ -1,0 +1,31 @@
+{
+    "spells" : [
+        {
+            "name" : "heal",
+            "hotkey" : "9",
+            "cool_down" : 0,
+            "base_value" : 240,
+            "int_scaling" : 5.6,
+            "cast_time" : 1,
+            "level" : 3,
+            "max_level" : 20,
+            "scales_on" : "heal",
+            "tier" : 2,
+            "job" : "assist"
+        },
+        {
+            "name" : "holy_cross",
+            "hotkey" : "c",
+            "cool_down" : 0.5,
+            "base_value" : 5,
+            "int_scaling" : 0,
+            "cast_time" : 1,
+            "level" : 1,
+            "max_level" : 1,
+            "scales_on" : "time",
+            "tier" : 3,
+            "job" : "ringmaster"
+        }
+    ]
+
+}

@@ -8,7 +8,7 @@ import mainwindow
 
 class Buff:
 
-    skills_json_file = 'skills.json'
+    skills_json_file = 'buffs.json'
     random_min = 0.37448262
     random_max = 0.58573920
     active_buffs = []
