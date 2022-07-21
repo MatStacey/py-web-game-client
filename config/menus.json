@@ -11,6 +11,8 @@
         "name" : "Run",
         "submenu" : [
             {"name" : "Buff & Heal"},
+            {"name" : "Buff"},
+            {"name" : "Heal"},
             {"name" : "Stop"}
         ]
     }]
