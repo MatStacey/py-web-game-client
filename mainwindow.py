@@ -1,12 +1,13 @@
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEnginePage
 import menuitem
+import os
 
 class MainWindow(QMainWindow):
 
     default_user_agent = "None"
-    profile_folder = "C:/PyFlyffClient/profiles/buttface"
-    profile_name = "Default"
+    default_profile = "default"
+    profile_folder = str(os.getenv('APPDATA') + "\py-flyff-client\profiles\\" + default_profile)
 
     def __init__(self, properties, application, name):
         super(MainWindow, self).__init__()
@@ -22,7 +23,7 @@ class MainWindow(QMainWindow):
             self.browser = None
 
         self.browser = QWebEngineView()
-        main_profile = QWebEngineProfile(MainWindow.profile_name, self.browser)
+        main_profile = QWebEngineProfile(MainWindow.default_profile, self.browser)
         main_profile.setCachePath(MainWindow.profile_folder)
         main_profile.setPersistentStoragePath(MainWindow.profile_folder)
         main_page = QWebEnginePage(main_profile, self.browser)
@@ -32,6 +33,7 @@ class MainWindow(QMainWindow):
         self.browser.setUrl(properties.get_url())
         self.setWindowTitle(self.app_name)
         self.browser.page().profile().setHttpUserAgent(MainWindow.default_user_agent)
+        print(MainWindow.profile_folder)
     
     def load_menu(self, application):
         for menu in menuitem.MenuItem.menu_items():
