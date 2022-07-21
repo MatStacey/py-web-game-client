@@ -1,9 +1,18 @@
 {
-    "name" : "File",
-    "submenu" : [
-        {"name" : "Start Macro"},
-        {"name" : "Stop Macro"},
-        {"name": "New Window"},
-        {"name": "Exit"}
-    ]
+    "menus" : [
+    {
+        "name" : "File",
+        "submenu" : [
+            {"name": "New Window"},
+            {"name": "Exit"}
+        ]
+    },
+    {
+        "name" : "Run",
+        "submenu" : [
+            {"name" : "Buff & Heal"},
+            {"name" : "Stop"}
+        ]
+    }]
 }
+

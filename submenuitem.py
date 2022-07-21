@@ -1,26 +1,25 @@
 
 from PyQt5.QtWidgets import QAction
-import bot
 
 class SubmenuItem:
 
-    def __init__(self, name, menu, application):
-        self.menu = menu
-        self.name = name
-        self.application = application
-        self.buff_bot = None
+    def __init__(self, name, menu_name):
+        self.menu_name = menu_name.lower()
+        self.name = name.lower()
 
     # MMM Janky if statements with hardcoded strings > will sort out later
-    def create_action(self):
-        q_action = QAction(self.name, self.menu.get_window())
-        self.buff_bot = bot.Bot(self.menu.get_window())
-        if(self.name == "Exit"):
-            q_action.triggered.connect(self.application.app.quit)
-        elif(self.name == "New Window"):
-            q_action.triggered.connect(lambda: self.application.create_alt_window())
-        elif(self.name == "Start Macro"):
-            q_action.triggered.connect(lambda: self.buff_bot.multithreading())
-        elif(self.name == "Stop Macro"):
-            q_action.triggered.connect(lambda: self.buff_bot.disable())
+    def create_action(self, window, application, macro):
+        q_action = QAction(self.name, window)
+        print("adding menu item", self.name, "to menu", self.menu_name)
+        if self.menu_name == "file":
+            if(self.name == "new window"):
+                q_action.triggered.connect(lambda: application.create_alt_window())
+            elif(self.name == "exit"):
+                q_action.triggered.connect(application.app.quit)
+        elif self.menu_name == "run":
+            if self.name == "buff & heal":
+                q_action.triggered.connect(lambda: macro.multithreading())
+            elif self.name == "stop":
+                q_action.triggered.connect(lambda: macro.disable())
         return q_action
     

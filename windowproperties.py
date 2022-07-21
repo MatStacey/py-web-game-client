@@ -1,41 +1,31 @@
 from PyQt5.QtGui import QIcon
 import json, os
+from PyQt5.QtCore import QUrl
 
 class WindowProperties():
 
     protocol = "https://"
     config_directory = os.path.dirname(__file__) + "/config"
-    vk_code_json = "vk_code.json"
+    config = "properties.json"
 
-    def __init__(self, config):
-        window_properties_json = os.path.join(WindowProperties.config_directory, config)
+    @staticmethod
+    def load_from_json(file):
+        window_properties_json = os.path.join(WindowProperties.config_directory, file)
         with open(window_properties_json, 'r') as json_file:
             properties = json.load(json_file)
-            self.app_name = properties['name']
-            self.icon_file = properties['icon']
-            self.min_window_size = properties['default_window_size']
-            self.url = properties['url']
+            return WindowProperties(properties['name'], properties['icon'], properties['default_window_size'], properties['url'])
 
-    def get_name(self):
-        return self.app_name
+    def __init__(self, name, icon, size, url):
+        self.app_name = name
+        self.icon_file = icon
+        self.min_window_size = size
+        self.url = url
 
     def get_url(self):
-        return WindowProperties.protocol + self.url
-
-    def get_icon(self):
-        return self.icon_file
-
-    def get_app_name(self):
-        return self.app_name
-
-    def load_vk_code(self):
-        vk_code_json_path = os.path.join(WindowProperties.config_directory, WindowProperties.vk_code_json)
-        with open(vk_code_json_path, 'r') as json_file:
-            vk_code_map = json.load(json_file)
-        return vk_code_map
+        return QUrl(WindowProperties.protocol + self.url)
     
     def set_window_properties(self, window):
-        window.setWindowIcon(QIcon(self.get_icon()))
+        window.setWindowIcon(QIcon(self.icon_file))
         window.setMinimumSize(640, 480)
         window.resize(self.min_window_size['width'], self.min_window_size['height'])
         return window

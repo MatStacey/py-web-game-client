@@ -6,12 +6,11 @@ class Bot:
     thread = None
     stop_threads = False
     
-    def __init__(self, window):
+    def __init__(self):
         self.activation_key = "f1"
         self.interval = 2
         self.cycles = 10
         self.buffs = buff.Buff.load_skills()
-        self.window = window
 
     def bot_loop(self, stop):
         hwndMain = win32gui.GetForegroundWindow()
@@ -20,9 +19,15 @@ class Bot:
         while run_loop:
             print("Executing rotation for time", counter)
             for skill in self.buffs:
-                if stop():
-                    run_loop = False
-                skill.cast(self.window, hwndMain)
+                if skill.has_assigned_hotkey() and not skill.is_still_active():
+
+                    skill.cast_buff(hwndMain)
+                
+                    #remove this logic when buffs and spells are split into their own objects
+                    if len(buff.Buff.active_buffs) == 9:
+                        skill.reduce_cast_rate()
+                    if skill.name not in buff.Buff.spells:
+                        skill.trigger_cooldown()
             if stop():
                 print("Bot stopped")
                 buff.Buff.clear_cooldowns(self.buffs)

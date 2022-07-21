@@ -3,13 +3,14 @@ import windowproperties, mainwindow, sys
 import altwindow
 class Application(QApplication):
 
-    default_config = 'properties.json'
+    application_name = "Flyff Python Client"
 
     def __init__(self, name):
         super(Application).__init__()
         self.setApplicationName(name)
         self.app = QApplication(sys.argv)
-        self.window = mainwindow.MainWindow(windowproperties.WindowProperties(Application.default_config), self)
+        properties = windowproperties.WindowProperties.load_from_json(windowproperties.WindowProperties.config)
+        self.window = mainwindow.MainWindow(properties, self, self.applicationName())
         self.windows = [self.window]
         self.alt_window = None
     
@@ -20,4 +21,4 @@ class Application(QApplication):
         self.alt_window = altwindow.AltWindow()
         self.alt_window.show()
 
-Application("Flyff - Test", ).run()
+Application(Application.application_name, ).run()
