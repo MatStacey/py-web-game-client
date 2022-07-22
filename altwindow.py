@@ -6,22 +6,13 @@ import mainwindow, windowproperties
 
 class AltWindow(QWebEngineView):
 
-    #Look ok, i know this sucks, its on the list
-    def __init__(self):
+    def __init__(self, properties, application):
         super().__init__()
-        self.windows = []
-        properties = windowproperties.WindowProperties('properties.json')
         self.setAttribute(Qt.WA_DeleteOnClose)
-
-        #I don't understand why i need to create an arbitrary list but if it stops it exploding then ok
-        self.destroyed.connect(lambda: self.windows.remove(self))
-
-        alt_page = QWebEnginePage(QWebEngineProfile(properties.get_name(), self), self)
-        self.setPage(alt_page)
-        self.load(QUrl(properties.get_url()))
-        self.setWindowTitle(properties.get_name())
-        self = properties.set_icon(self)
+        self.destroyed.connect(lambda: application.unregister_alt_window(self))
+        properties.load_alt_profile(self)
+        properties.set_profile_user_agent(self.page().profile())
+        properties.set_alt_window_title(self, application.applicationName())
+        application.register_alt_window(self)
         self.showNormal()
-        self.page().profile().setHttpUserAgent(mainwindow.MainWindow.default_user_agent)
-        self.windows.append(self)
         

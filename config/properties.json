@@ -4,5 +4,6 @@
     "icon" : "icons/PyFlyff.ico",
     "default_window_size" : { "width" : 1920, "height": 1080},
     "profile" : "default",
+    "alt_profile" : "alt",
     "user_agent" : "None"
 }

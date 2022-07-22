@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QApplication
 import windowproperties, mainwindow, sys
-import altwindow
+import altwindow, bot
 class Application(QApplication):
 
     application_name = "Flyff Python Client"
@@ -18,11 +18,19 @@ class Application(QApplication):
         self.app.exec_()
 
     def create_alt_window(self):
-        self.alt_window = altwindow.AltWindow()
+        self.alt_window = altwindow.AltWindow(windowproperties.WindowProperties.load_from_json(windowproperties.WindowProperties.config), self)
         self.alt_window.show()
 
     def quit(self):
+        bot.Bot.thread = None
+        bot.Bot.stop_threads = True
         self.window.browser.page().deleteLater()
         self.app.quit()
+
+    def register_alt_window(self, window):
+        self.windows.append(window)
+    
+    def unregister_alt_window(self, window):
+        self.windows.remove(window)
 
 Application(Application.application_name, ).run()

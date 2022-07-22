@@ -7,7 +7,7 @@ class SubmenuItem:
         self.menu_name = menu_name.lower()
         self.name = name.lower()
 
-    # MMM Janky if statements with hardcoded strings > will sort out later
+    # MMM Janky if statements with hardcoded strings > will sort out later (maybe. if i can be bothered)
     def create_action(self, window, application, macro):
         q_action = QAction(self.name, window)
         if self.menu_name == "file":

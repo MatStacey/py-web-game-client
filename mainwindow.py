@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         self.browser = QWebEngineView()
         self.browser.setPage(QWebEnginePage(properties.get_profile(self.browser), self.browser))
         properties.set_profile_user_agent(self.browser.page().profile())
-        self.setWindowTitle(self.app_name)
+        properties.set_window_title(self)
         self.setCentralWidget(self.browser)
         properties.set_url(self.browser)
         self.showMaximized()
