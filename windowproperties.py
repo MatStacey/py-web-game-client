@@ -28,4 +28,6 @@ class WindowProperties():
         window.setWindowIcon(QIcon(self.icon_file))
         window.setMinimumSize(640, 480)
         window.resize(self.min_window_size['width'], self.min_window_size['height'])
+        window.browser = None
+        window.showNormal()
         return window
