@@ -1,7 +1,7 @@
-import submenuitem, bot
 import os
-import windowproperties
 import json
+
+import submenuitem, bot, windowproperties
 
 class MenuItem:
 

@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QApplication
-import windowproperties, mainwindow, sys
-import altwindow, bot
+
+import windowproperties, mainwindow, sys, altwindow, bot
+
 class Application(QApplication):
 
     application_name = "Flyff Python Client"

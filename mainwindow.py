@@ -1,7 +1,9 @@
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEnginePage
-import menuitem
 import os
+
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage
+
+import menuitem
 
 class MainWindow(QMainWindow):
 

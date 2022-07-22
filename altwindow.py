@@ -1,8 +1,5 @@
-# from PyQt5.QtWidgets import QLabel, QVBoxLayout, QWidget
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEnginePage
-from PyQt5.QtCore import QUrl, Qt
-from PyQt5.QtGui import QIcon
-import mainwindow, windowproperties
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtCore import Qt
 
 class AltWindow(QWebEngineView):
 
