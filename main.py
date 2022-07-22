@@ -22,9 +22,8 @@ class Application(QApplication):
         self.alt_window = altwindow.AltWindow(windowproperties.WindowProperties.load_from_json(windowproperties.WindowProperties.config), self)
         self.alt_window.show()
 
-    def quit(self):
-        bot.Bot.thread = None
-        bot.Bot.stop_threads = True
+    def quit(self, macro):
+        macro.disable()
         self.window.browser.page().deleteLater()
         self.app.quit()
 
