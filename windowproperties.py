@@ -9,6 +9,7 @@ class WindowProperties():
     config_directory = os.path.dirname(__file__) + "/config"
     profile_folder = os.getenv('APPDATA') + "\py-flyff-client\profiles\\"
     config = "properties.json"
+    app_name = "Flyff Python Client"
 
     @staticmethod
     def load_from_json(file):

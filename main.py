@@ -4,8 +4,6 @@ import windowproperties, mainwindow, sys, altwindow, bot
 
 class Application(QApplication):
 
-    application_name = "Flyff Python Client"
-
     def __init__(self, name):
         super(Application).__init__()
         self.setApplicationName(name)
@@ -33,4 +31,4 @@ class Application(QApplication):
     def unregister_alt_window(self, window):
         self.windows.remove(window)
 
-Application(Application.application_name, ).run()
+Application(windowproperties.WindowProperties.app_name, ).run()

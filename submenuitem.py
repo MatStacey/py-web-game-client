@@ -9,7 +9,6 @@ class SubmenuItem:
         self.menu_name = menu_name.lower()
         self.name = name.lower()
         self.modifier = "Ctrl"
-        self.profile = "default"
 
     # MMM Janky if statements with hardcoded strings > will sort out later (maybe. if i can be bothered)
     def create_action(self, window, application, macro):

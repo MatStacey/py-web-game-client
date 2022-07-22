@@ -1,4 +1,4 @@
-import skill, threading
+import skill, windowproperties, threading
 import win32gui
 
 class Bot:
@@ -10,15 +10,13 @@ class Bot:
         self.buffs = skill.Skill.load_buffs()
         self.spells = skill.Skill.load_spells()
         self.statusbar = statusbar
-        self.window_name = "Flyff Python Client - default"
+        self.window_name = windowproperties.WindowProperties.app_name + " - " + "default"
 
     def buff_heal(self, stop):
         hwndMain = win32gui.FindWindow(None, self.window_name)
-        print("running in window", self.window_name)
         run_loop = True
         counter = 0
         while run_loop:
-            print("Executing rotation for time", counter)
             for buff in self.buffs:
                 if stop():
                     run_loop = False
@@ -74,11 +72,10 @@ class Bot:
         Bot.thread = None
 
     def multithreading(self, profile):
-        print("profile = ", profile)
         if Bot.thread:
             self.statusbar.showMessage("Macro Already Running", 3000)
             return 
-        self.window_name = "Flyff Python Client" + " - " + profile
+        self.window_name = windowproperties.WindowProperties.app_name + " - " + profile
         self.statusbar.showMessage("Running Buff & Heal Macro for " + profile + " profile", 6000) 
         Bot.stop_threads = False
         Bot.thread = threading.Thread(target = self.buff_heal, args = (lambda : Bot.stop_threads,))
@@ -88,7 +85,7 @@ class Bot:
         if Bot.thread:
             self.statusbar.showMessage("Macro Already Running", 3000)
             return 
-        self.window_name = "Flyff Python Client" + " - " + profile
+        self.window_name = windowproperties.WindowProperties.app_name + " - " + profile
         self.statusbar.showMessage("Running Heal Macro for " + profile + " profile", 6000)
         Bot.stop_threads = False
         Bot.thread = threading.Thread(target = self.heal, args = (lambda : Bot.stop_threads,))
@@ -98,7 +95,7 @@ class Bot:
         if Bot.thread:
             self.statusbar.showMessage("Macro Already Running", 3000)
             return  
-        self.window_name = "Flyff Python Client" + " - " + profile
+        self.window_name = windowproperties.WindowProperties.app_name + " - " + profile
         self.statusbar.showMessage("Running Buff Macro for " + profile + " profile", 6000)
         Bot.stop_threads = False
         Bot.thread = threading.Thread(target = self.buff, args = (lambda : Bot.stop_threads,))
