@@ -4,6 +4,8 @@
             {
                 "name" : "mental_sign",
                 "hotkey" : "1",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -17,6 +19,8 @@
             {
                 "name" : "quick_step",
                 "hotkey" : "2",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -30,6 +34,8 @@
             {
                 "name" : "haste",
                 "hotkey" : "3",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -43,6 +49,8 @@
             {
                 "name" : "patience",
                 "hotkey" : "4",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -56,6 +64,8 @@
             {
                 "name" : "heap_up",
                 "hotkey" : "5",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -69,6 +79,8 @@
             {
                 "name" : "cats_reflex",
                 "hotkey" : "6",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -82,6 +94,8 @@
             {
                 "name" : "cannon_ball",
                 "hotkey" : "7",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -95,6 +109,8 @@
             {
                 "name" : "beef_up",
                 "hotkey" : "8",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 250,
                 "int_scaling" : 2,
@@ -108,6 +124,8 @@
             {
                 "name" : "spirit_fortune",
                 "hotkey" : "9",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0,
                 "base_value" : 160,
                 "int_scaling" : 1.5,
@@ -121,6 +139,8 @@
             {
                 "name" : "geburah_tiphreth",
                 "hotkey" : "None",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 39,
                 "base_value" : 30,
                 "int_scaling" : 0.2,
@@ -137,6 +157,8 @@
             {
                 "name" : "holy_cross",
                 "hotkey" : "c",
+                "modifier" : "",
+                "action_bar" : "f1",
                 "cool_down" : 0.5,
                 "base_value" : 5,
                 "int_scaling" : 0,
@@ -149,7 +171,9 @@
             },
             {
                 "name" : "heal",
-                "hotkey" : "0",
+                "hotkey" : "1",
+                "modifier" : "left_shift",
+                "action_bar" : "f2",
                 "cool_down" : 0,
                 "base_value" : 240,
                 "int_scaling" : 5.6,

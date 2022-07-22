@@ -3,6 +3,7 @@ import random, time
 from datetime import datetime, timedelta
 import win32con
 import win32api
+import pyautogui
 
 class Skill:
 
@@ -40,13 +41,13 @@ class Skill:
 
 
     @staticmethod
-    def map_input_hotkey(buff):
-        if not buff.has_assigned_hotkey():
+    def map_input_key(buff, key):
+        if not buff.has_assigned_hotkey() or not key or key == "":
             return None
         vk_code_json_path = os.path.join(windowproperties.WindowProperties.config_directory, Skill.vk_code_json)
         with open(vk_code_json_path, 'r') as json_file:
             vk_code_map = json.load(json_file)
-        return int(vk_code_map.get(buff.hotkey_input), 16)
+        return int(vk_code_map.get(key), 16)
     
     @staticmethod
     def clear_cooldowns(buffs):
@@ -59,8 +60,12 @@ class Skill:
     def __init__(self, skill):
         self.name = skill['name']
         self.cool_down = skill['cool_down']
-        self.hotkey_input = str(skill['hotkey']).lower()
-        self.mapped_key = Skill.map_input_hotkey(self)
+        self.hotkey_input = str(skill['hotkey']).lower().strip()
+        self.modifier_input = str(skill['modifier']).lower().strip()
+        self.action_bar_hotkey = str(skill['action_bar']).lower().strip()
+        self.mapped_modifier = Skill.map_input_key(self, self.modifier_input)
+        self.mapped_key = Skill.map_input_key(self, self.hotkey_input)
+        self.action_bar = Skill.map_input_key(self, self.action_bar_hotkey)
         self.base_value = skill['base_value']
         self.int_scaling = skill['int_scaling']
         self.cast_time = skill['cast_time']
@@ -86,13 +91,20 @@ class Skill:
         return False
 
     def has_assigned_hotkey(self):
-        return self.hotkey_input not in [None, 'none', ""]
+        return self.hotkey_input.strip() not in [None, 'none', ""]
 
     def cast(self, window_handler):
         self.print()
+        if self.modifier_input and self.modifier_input != "":
+            win32api.SendMessage(window_handler, win32con.WM_KEYDOWN, self.mapped_modifier, 0)
+
         win32api.SendMessage(window_handler, win32con.WM_KEYDOWN, self.mapped_key, 0)
         time.sleep(random.uniform(random.uniform(0.39572048,0.58236452), random.uniform(0.626483, 0.8448473)))
         win32api.SendMessage(window_handler, win32con.WM_KEYUP, self.mapped_key, 0)
+
+        if self.modifier_input and self.modifier_input != "":
+            win32api.SendMessage(window_handler, win32con.WM_KEYUP, self.mapped_modifier, 0)
+
 
     def reduce_cast_rate(self):
         time.sleep(random.uniform(self.cast_time * random.uniform(0.50834633, 0.57841235), self.cast_time * random.uniform(0.84135841, 1.057168741)))

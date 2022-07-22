@@ -28,4 +28,5 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.browser)
         self.browser.page().profile().setHttpUserAgent(MainWindow.default_user_agent)
         properties.set_url(self.browser)
+        self.showNormal()
         
