@@ -16,6 +16,8 @@ class MainWindow(QMainWindow):
         properties.set_window_icon(self)
         self.setMinimumSize(640, 480)
         self.app_name = name
+        self.statusbar = self.statusBar()
+        self.statusbar.showMessage("Ready", 3000)
 
         for menu in menuitem.MenuItem.menu_items():
             menu.add_to_window(self, application)
@@ -27,4 +29,3 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.browser)
         properties.set_url(self.browser)
         self.showMaximized()
-        

@@ -19,16 +19,16 @@ class SubmenuItem:
                 q_action.triggered.connect(lambda: application.quit(macro))
         elif self.menu_name == "run":
             if self.name == "buff & heal":
-                q_action.setShortcut(self.modifier + "+1")
+                q_action.setShortcut(self.modifier + "+Q")
                 q_action.triggered.connect(lambda: macro.multithreading())
             elif self.name == "buff":
-                q_action.setShortcut(self.modifier + "+2")
+                q_action.setShortcut(self.modifier + "+W")
                 q_action.triggered.connect(lambda: macro.multithreading_buff())
             elif self.name == "heal":
-                q_action.setShortcut(self.modifier + "+3")
+                q_action.setShortcut(self.modifier + "+E")
                 q_action.triggered.connect(lambda: macro.multithreading_heal())
             elif self.name == "stop":
-                q_action.setShortcut(self.modifier + "+C")
+                q_action.setShortcut(self.modifier + "+R")
                 q_action.triggered.connect(lambda: macro.disable())
         return q_action
     
