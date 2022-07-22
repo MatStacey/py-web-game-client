@@ -29,5 +29,6 @@ class MenuItem:
     def populate_submenu(self, window, menubar, application):
         for submenu_item in self.submenu_items:
             submenu = submenuitem.SubmenuItem(submenu_item['name'], self.name)
-            menubar.addAction(submenu.create_action(window, application, bot.Bot(window.statusbar)))
+            macro_bot = bot.Bot(window.statusbar)
+            menubar.addAction(submenu.create_action(window, application, macro_bot))
         return self

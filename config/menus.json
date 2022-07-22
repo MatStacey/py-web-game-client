@@ -15,6 +15,13 @@
             {"name" : "Heal"},
             {"name" : "Stop"}
         ]
+    },
+    {
+        "name" : "Settings",
+        "submenu" : [
+            {"name" : "Run in Main Window"},
+            {"name" : "Run in Alt Window"}
+        ]
     }]
 }
 

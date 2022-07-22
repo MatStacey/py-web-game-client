@@ -10,9 +10,11 @@ class Bot:
         self.buffs = skill.Skill.load_buffs()
         self.spells = skill.Skill.load_spells()
         self.statusbar = statusbar
+        self.window_name = "Flyff Python Client - default"
 
     def buff_heal(self, stop):
-        hwndMain = win32gui.GetForegroundWindow()
+        hwndMain = win32gui.FindWindow(None, self.window_name)
+        print("running in window", self.window_name)
         run_loop = True
         counter = 0
         while run_loop:
@@ -37,7 +39,7 @@ class Bot:
             counter += 1     
 
     def heal(self, stop):
-        hwndMain = win32gui.GetForegroundWindow()
+        hwndMain = win32gui.FindWindow(None, self.window_name)
         run_loop = True
         counter = 0
         while run_loop:
@@ -52,7 +54,7 @@ class Bot:
         
 
     def buff(self, stop):
-        hwndMain = win32gui.GetForegroundWindow()
+        hwndMain = win32gui.FindWindow(None, self.window_name)
         run_loop = True
         for buff in self.buffs:
             if not run_loop:
@@ -71,29 +73,33 @@ class Bot:
         Bot.stop_threads = True
         Bot.thread = None
 
-    def multithreading(self):
+    def multithreading(self, profile):
+        print("profile = ", profile)
         if Bot.thread:
             self.statusbar.showMessage("Macro Already Running", 3000)
             return 
-        self.statusbar.showMessage("Running Buff & Heal Macro", 6000) 
+        self.window_name = "Flyff Python Client" + " - " + profile
+        self.statusbar.showMessage("Running Buff & Heal Macro for " + profile + " profile", 6000) 
         Bot.stop_threads = False
         Bot.thread = threading.Thread(target = self.buff_heal, args = (lambda : Bot.stop_threads,))
         Bot.thread.start()
 
-    def multithreading_heal(self):
+    def multithreading_heal(self, profile):
         if Bot.thread:
             self.statusbar.showMessage("Macro Already Running", 3000)
             return 
-        self.statusbar.showMessage("Running Heal Macro", 6000)
+        self.window_name = "Flyff Python Client" + " - " + profile
+        self.statusbar.showMessage("Running Heal Macro for " + profile + " profile", 6000)
         Bot.stop_threads = False
         Bot.thread = threading.Thread(target = self.heal, args = (lambda : Bot.stop_threads,))
         Bot.thread.start()
 
-    def multithreading_buff(self):
+    def multithreading_buff(self, profile):
         if Bot.thread:
             self.statusbar.showMessage("Macro Already Running", 3000)
             return  
-        self.statusbar.showMessage("Running Buff Macro", 6000)
+        self.window_name = "Flyff Python Client" + " - " + profile
+        self.statusbar.showMessage("Running Buff Macro for " + profile + " profile", 6000)
         Bot.stop_threads = False
         Bot.thread = threading.Thread(target = self.buff, args = (lambda : Bot.stop_threads,))
         Bot.thread.start()
