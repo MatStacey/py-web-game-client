@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QIcon
-import json, os
 from PyQt5.QtCore import QUrl
+import json, os
 
 class WindowProperties():
 
@@ -21,8 +21,8 @@ class WindowProperties():
         self.min_window_size = size
         self.url = url
 
-    def get_url(self):
-        return QUrl(WindowProperties.protocol + self.url)
+    def set_url(self, browser):
+        return browser.setUrl(QUrl(WindowProperties.protocol + self.url))
     
     def set_window_properties(self, window):
         window.setWindowIcon(QIcon(self.icon_file))
