@@ -1,9 +1,10 @@
-import windowproperties, os, json
-import random, time
+import os, random, time
+import json
+import win32con, win32api
+
 from datetime import datetime, timedelta
-import win32con
-import win32api
-import pyautogui
+
+import windowproperties
 
 class Skill:
 
@@ -20,24 +21,41 @@ class Skill:
          Skill.active_buffs = []
 
     @staticmethod
+    def create_skill_from_json(skill, buffs):
+        return buffs.append(Skill(
+            skill['name'], 
+            skill['cool_down'], 
+            skill['hotkey'].lower().strip(), 
+            skill['modifier'].lower().strip(), 
+            skill['action_bar'].lower().strip(), 
+            skill['base_value'], 
+            skill['int_scaling'], 
+            skill['cast_time'], 
+            skill['level'], 
+            skill['max_level'], 
+            skill['scales_on'], 
+            skill['tier'], 
+            skill['job']))
+
+    @staticmethod
     def load_buffs():
         skill_data_file = os.path.join(windowproperties.WindowProperties.config_directory, Skill.skills_json_file)
         buffs = []
         with open(skill_data_file, 'r') as json_file:
             skill_data = json.load(json_file)
-            for buff_json in skill_data['skills']['buffs']:
-                buffs.append(Skill(buff_json))
+            for buff_data in skill_data['skills']['buffs']:
+                Skill.create_skill_from_json(buff_data, buffs)
         return buffs
 
     @staticmethod
     def load_spells():
         skill_data_file = os.path.join(windowproperties.WindowProperties.config_directory, Skill.skills_json_file)
-        buffs = []
+        spells = []
         with open(skill_data_file, 'r') as json_file:
             skill_data = json.load(json_file)
-            for spell in skill_data['skills']['spells']:
-                buffs.append(Skill(spell))
-        return buffs
+            for spell_data in skill_data['skills']['spells']:
+                Skill.create_skill_from_json(spell_data, spells)
+        return spells
 
 
     @staticmethod
@@ -57,26 +75,28 @@ class Skill:
             buff.buff_cooldown_expiration = 0
         Skill.active_buffs = []
 
-    def __init__(self, skill):
-        self.name = skill['name']
-        self.cool_down = skill['cool_down']
-        self.hotkey_input = str(skill['hotkey']).lower().strip()
-        self.modifier_input = str(skill['modifier']).lower().strip()
-        self.action_bar_hotkey = str(skill['action_bar']).lower().strip()
-        self.mapped_modifier = Skill.map_input_key(self, self.modifier_input)
-        self.mapped_key = Skill.map_input_key(self, self.hotkey_input)
-        self.action_bar = Skill.map_input_key(self, self.action_bar_hotkey)
-        self.base_value = skill['base_value']
-        self.int_scaling = skill['int_scaling']
-        self.cast_time = skill['cast_time']
-        self.level = skill['level']
-        self.max_level = skill['max_level']
-        self.scales_on = skill['scales_on']
-        self.tier = skill['tier']
-        self.job = skill['job']
+    def __init__(self, name, cool_down, hotkey, modifier, action_bar, base_value, int_scaling, cast_time, level, max_level, scales_on, tier,job):
+        self.name = name
+        self.cool_down = cool_down
+        self.hotkey_input = hotkey
+        self.modifier_input = modifier
+        self.action_bar_hotkey = action_bar
+        self.base_value = base_value
+        self.int_scaling = int_scaling
+        self.cast_time = cast_time
+        self.level = level
+        self.max_level = max_level
+        self.scales_on = scales_on
+        self.tier = tier
+        self.job = job
+
         self.on_cooldown = False
         self.cooldown_started = ""
         self.buff_cooldown_expiration = 0
+
+        self.mapped_modifier = Skill.map_input_key(self, self.modifier_input)
+        self.mapped_key = Skill.map_input_key(self, self.hotkey_input)
+        self.action_bar = Skill.map_input_key(self, self.action_bar_hotkey)
 
         #MOVE TO DIFFERENT CLASS (character?)
         self.int_value = 213
