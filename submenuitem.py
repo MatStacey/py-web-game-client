@@ -14,7 +14,7 @@ class SubmenuItem:
             if(self.name == "new window"):
                 q_action.triggered.connect(lambda: application.create_alt_window())
             elif(self.name == "exit"):
-                q_action.triggered.connect(application.app.quit)
+                q_action.triggered.connect(lambda: application.quit())
         elif self.menu_name == "run":
             if self.name == "buff & heal":
                 q_action.triggered.connect(lambda: macro.multithreading())

@@ -2,5 +2,7 @@
     "url" : "universe.flyff.com/play",
     "name" : "Flyff Python Client",
     "icon" : "icons/PyFlyff.ico",
-    "default_window_size" : { "width" : 1920, "height": 1080}
+    "default_window_size" : { "width" : 1920, "height": 1080},
+    "profile" : "default",
+    "user_agent" : "None"
 }

@@ -20,7 +20,7 @@ class AltWindow(QWebEngineView):
         self.setPage(alt_page)
         self.load(QUrl(properties.get_url()))
         self.setWindowTitle(properties.get_name())
-        self = properties.set_window_properties(self)
+        self = properties.set_icon(self)
         self.showNormal()
         self.page().profile().setHttpUserAgent(mainwindow.MainWindow.default_user_agent)
         self.windows.append(self)

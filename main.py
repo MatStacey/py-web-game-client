@@ -21,4 +21,8 @@ class Application(QApplication):
         self.alt_window = altwindow.AltWindow()
         self.alt_window.show()
 
+    def quit(self):
+        self.window.browser.page().deleteLater()
+        self.app.quit()
+
 Application(Application.application_name, ).run()

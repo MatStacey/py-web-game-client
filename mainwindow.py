@@ -11,22 +11,18 @@ class MainWindow(QMainWindow):
 
     def __init__(self, properties, application, name):
         super(MainWindow, self).__init__()
-        properties.set_window_properties(self)
+        properties.set_window_icon(self)
+        self.setMinimumSize(640, 480)
         self.app_name = name
+
         for menu in menuitem.MenuItem.menu_items():
             menu.add_to_window(self, application)
 
         self.browser = QWebEngineView()
-
-        main_profile = QWebEngineProfile(MainWindow.default_profile, self.browser)
-        main_profile.setCachePath(MainWindow.profile_folder)
-        main_profile.setPersistentStoragePath(MainWindow.profile_folder)
-
-        main_page = QWebEnginePage(main_profile, self.browser)
-        self.browser.setPage(main_page)
+        self.browser.setPage(QWebEnginePage(properties.get_profile(self.browser), self.browser))
+        properties.set_profile_user_agent(self.browser.page().profile())
         self.setWindowTitle(self.app_name)
         self.setCentralWidget(self.browser)
-        self.browser.page().profile().setHttpUserAgent(MainWindow.default_user_agent)
         properties.set_url(self.browser)
         self.showMaximized()
         
